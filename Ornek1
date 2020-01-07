@@ -41,6 +41,14 @@ public class Ornek1 {
                 break;
                 case 4: Metot.fatura(dakika, sms, internet, kisiSay);
                 break;
+                case 6:
+                    System.exit(0);
+                    System.out.println("Çıkış Yapılıyor..");
+                    break;
+                    
+                default: 
+                    System.out.println("Hatalı İşlem..");
+                    break;
             }
           }
             
