@@ -1,0 +1,54 @@
+package ornek1;
+
+import java.util.Scanner;
+
+public class Ornek1 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int menu, listeleme, arama, yasOrt, fatura, enDusuk;
+
+        System.out.println("Kaç kişi var?: ");
+        int kisiSay = scanner.nextInt();
+        String isim [] = new String[kisiSay];
+        int yas [] = new int[kisiSay];
+        int dakika [] = new int[kisiSay];
+        int sms [] = new int[kisiSay];
+        int internet [] = new int[kisiSay];
+        
+        //Veri Girişi
+        for (int i = 0; i < kisiSay; i++) {
+            System.out.print("İsim Giriniz: ");
+            isim [i] = scanner.next();
+            System.out.print("Yaşı Giriniz: ");
+            yas [i] = scanner.nextInt();
+            System.out.print("Harcanan Dakika: ");
+            dakika [i] = scanner.nextInt();
+            System.out.print("Harcanan SMS: ");
+            sms [i] = scanner.nextInt();
+            System.out.print("Harcanan İnternet: ");
+            internet [i] = scanner.nextInt();            
+        }
+        //Menü
+          for(;;) {
+          menu = Metot.menu();
+            switch(menu) {
+                case 1: Metot.Listele(isim, dakika, sms, internet, yas, kisiSay);
+                break;
+                case 2: Metot.arama(isim, dakika, sms, internet, yas, kisiSay);
+                break;
+                case 3: Metot.yasOrt(yas, kisiSay);
+                break;
+                case 4: Metot.fatura(dakika, sms, internet, kisiSay);
+                break;
+            }
+          }
+            
+            
+            
+            
+        
+        
+        
+    }
+}
