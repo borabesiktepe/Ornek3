@@ -1,0 +1,106 @@
+package ornek1;
+
+import java.util.Scanner;
+
+class Metot {
+    
+    public static int menu() {
+        Scanner scanner = new Scanner(System.in);
+        String islemler = "1) Listele \n"
+                + "2) İsim ile Arat \n"
+                + "3) Yaş Ortalaması \n"
+                + "4) Fatura Bedeli Ortalaması, En Büyük ve En Küçük Fatura \n"
+                + "5) Faturası En Düşük Olanın Bilgisi \n"
+                + "6) Çıkış";
+        System.out.println("----------");
+        System.out.println(islemler);
+        System.out.print("İşlem Seçiniz: ");
+        int menu = scanner.nextInt();
+        return menu;    
+    }
+    
+    public static void Listele(String isim[], int dakika[], int sms[], int internet[], int yas[], int kisiSay) {
+        System.out.println("----------");
+        System.out.println("İsim" + "\t" + "Yaş" + "\t" + "Dakika" + "\t" + "SMS" + "\t" + "İnternet");
+        for (int i = 0; i < kisiSay; i++) {
+            System.out.println(isim[i] + "\t" + yas[i] + "\t" + dakika[i] + "\t" + sms[i] + "\t" + internet[i]);
+            
+        }        
+    }
+    
+    public static void arama(String isim[], int dakika[], int sms[], int internet[], int yas[], int kisiSay) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("----------");
+        System.out.println("Aranan İsmi Giriniz: ");
+        String arananIsim = scanner.next();
+        for (int i = 0; i < kisiSay; i++) {
+            if (arananIsim.equalsIgnoreCase(isim[i]))
+                System.out.println("İsim" + "\t" + "Yaş" + "\t" + "Dakika" + "\t" + "SMS" + "\t" + "İnternet");
+                System.out.println(isim[i] +"\t" + yas[i] + "\t" + dakika[i] + "\t" + sms[i] + "\t" + internet[i]);
+        }   
+    }
+    
+    public static int yasOrt(int yas[], int kisiSay) {
+        System.out.println("----------");
+        int yasOrt = 0;
+        for (int i = 0; i < yas.length; i++) {
+            yasOrt += yas[i];
+        }
+        System.out.println("Yaşların Ortalaması: " + (yasOrt/kisiSay));
+        return 0;
+    }
+    
+    public static int fatura(int dakika[], int sms[], int internet[], int kisiSay) {
+        System.out.println("----------");
+        int dakikaUcret = 0;
+        int smsUcret = 0;
+        int internetUcret = 0;
+        for (int i = 0; i < kisiSay; i++) {
+            dakikaUcret += 0.35*(dakika[i]);
+            smsUcret += 0.25*(sms[i]);
+            internetUcret += 1*(internet[i]);
+        }
+        int encokDakika = 0;
+        int encokSMS = 0;
+        int encokInt = 0;
+        for (int i = 0; i < kisiSay; i++) {
+            int a = dakika[i];
+            encokDakika = a;
+            if(dakika[i]>a) encokDakika = dakika[i];
+            int b = sms[i];
+            encokSMS = b;
+            if(sms[i]>b) encokSMS = sms[i];
+            int c = internet[i];
+            encokInt = c;
+            if(internet[i]>c) encokInt = internet[i];
+        }
+        int enazDakika = 0;
+        int enazSMS = 0;
+        int enazInt = 0;
+        
+        for (int i = 0; i < kisiSay; i++) {
+            int a = dakika[0];
+            enazDakika = a;
+            if(dakika[i]<a) enazDakika = dakika[i];
+            int b = sms[0];
+            enazSMS = b;
+            if(sms[i]<b) enazSMS = sms[i];
+            int c = internet[0];
+            enazInt = c;
+            if(internet[i]<c) enazInt = internet[i];
+            
+        }
+
+        System.out.println("Dakika Ücreti Ortalaması: " + ((double)dakikaUcret/kisiSay));
+        System.out.println("SMS Ücreti Ortalaması: " + ((double)smsUcret/kisiSay));
+        System.out.println("İnternet Ücreti Ortalaması: " + ((double)internetUcret/kisiSay));
+        System.out.println("En Harcanan Dakika: " + encokDakika);
+        System.out.println("En Harcanan SMS: " +encokSMS);
+        System.out.println("En Harcanan İnternet: " + encokInt);
+        System.out.println("En Az Harcanan Dakika: " + enazDakika);
+        System.out.println("En Az Harcanan SMS: " +enazSMS);
+        System.out.println("En Az Harcanan İnternet: " + enazInt);
+        return 0;
+    }
+    
+}
